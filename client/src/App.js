@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import ItemManagerContract from "./contracts/ItemManager.json";
 import ItemContract from "./contracts/Item.json";
 import getWeb3 from "./getWeb3";
-
 import "./App.css";
+import Navbar from "./view/navbar";
 
 class App extends Component {
   state = { loaded:false, cost:100, itemName: "exampleProduct"};
@@ -19,7 +19,6 @@ class App extends Component {
 
       // Get the contract instance.
       this.networkId = await this.web3.eth.net.getId();
-      console.log(this.networkId);
 
      
 
@@ -97,10 +96,11 @@ class App extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
+      
       <div className="App">
+        <Navbar/>
         <h1>simple payment / supplyChain example</h1>
         <h2>Item</h2>
-        
         <h2>add Item</h2>
         cost in wei : <input type="text" name="cost" value={this.state.cost} onChange={this.handelInputChange}/>
          the name of item : <input type="text" name="itemName" value={this.state.itemName} onChange={this.handelInputChange}/>
